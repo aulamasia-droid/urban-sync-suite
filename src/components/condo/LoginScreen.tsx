@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { ROLES_DEMO, RolDemo } from "@/data/mockData";
-import { Building2 } from "lucide-react";
+import logoAI from "@/assets/logo_ai.png";
 
 interface LoginScreenProps {
   onLogin: (user: RolDemo) => void;
