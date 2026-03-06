@@ -8,7 +8,15 @@ import Casas from "@/components/condo/modules/Casas";
 import Residentes from "@/components/condo/modules/Residentes";
 import EstadosCuenta from "@/components/condo/modules/EstadosCuenta";
 import Pagos from "@/components/condo/modules/Pagos";
-import PlaceholderModule from "@/components/condo/modules/PlaceholderModule";
+import Multas from "@/components/condo/modules/Multas";
+import Avisos from "@/components/condo/modules/Avisos";
+import BitacoraCorreos from "@/components/condo/modules/BitacoraCorreos";
+import Chat from "@/components/condo/modules/Chat";
+import Tickets from "@/components/condo/modules/Tickets";
+import Reservas from "@/components/condo/modules/Reservas";
+import Visitas from "@/components/condo/modules/Visitas";
+import Documentos from "@/components/condo/modules/Documentos";
+import Configuracion from "@/components/condo/modules/Configuracion";
 
 export default function Index() {
   const [dark, setDark] = useState(false);
@@ -23,38 +31,35 @@ export default function Index() {
 
   if (!user) return <LoginScreen onLogin={setUser} />;
 
+  const nav = (id: string) => { setActiveModule(id); setNotifOpen(false); };
+  const toggleDark = () => setDark(!dark);
+
   const renderModule = () => {
     switch (activeModule) {
-      case "dashboard": return <Dashboard onNav={(id) => { setActiveModule(id); setNotifOpen(false); }} />;
+      case "dashboard": return <Dashboard onNav={nav} />;
       case "casas": return <Casas />;
       case "residentes": return <Residentes />;
       case "estados": return <EstadosCuenta />;
       case "pagos": return <Pagos />;
-      default: return <PlaceholderModule title={activeModule.charAt(0).toUpperCase() + activeModule.slice(1)} />;
+      case "multas": return <Multas />;
+      case "avisos": return <Avisos />;
+      case "correos": return <BitacoraCorreos />;
+      case "chat": return <Chat />;
+      case "tickets": return <Tickets />;
+      case "reservas": return <Reservas />;
+      case "visitas": return <Visitas />;
+      case "documentos": return <Documentos />;
+      case "configuracion": return <Configuracion dark={dark} onToggleDark={toggleDark} />;
+      default: return null;
     }
   };
 
   return (
     <div className="flex h-screen overflow-hidden bg-background">
-      <Sidebar
-        active={activeModule}
-        onNav={(id) => { setActiveModule(id); setNotifOpen(false); }}
-        open={sidebarOpen}
-        user={user}
-        onLogout={() => setUser(null)}
-      />
+      <Sidebar active={activeModule} onNav={nav} open={sidebarOpen} user={user} onLogout={() => setUser(null)} />
       <div className="flex flex-1 flex-col overflow-hidden">
-        <TopBar
-          dark={dark}
-          onToggleDark={() => setDark(!dark)}
-          user={user}
-          notifOpen={notifOpen}
-          setNotifOpen={setNotifOpen}
-          onMenuToggle={() => setSidebarOpen(!sidebarOpen)}
-        />
-        <main className="flex-1 overflow-y-auto p-6">
-          {renderModule()}
-        </main>
+        <TopBar dark={dark} onToggleDark={toggleDark} user={user} notifOpen={notifOpen} setNotifOpen={setNotifOpen} onMenuToggle={() => setSidebarOpen(!sidebarOpen)} />
+        <main className="flex-1 overflow-y-auto p-6">{renderModule()}</main>
       </div>
     </div>
   );
