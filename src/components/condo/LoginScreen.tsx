@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { ROLES_DEMO, RolDemo } from "@/data/mockData";
-import logoAI from "@/assets/logo_ai.png";
+import logoArqenta from "@/assets/logo_arqenta.png";
 
 interface LoginScreenProps {
   onLogin: (user: RolDemo) => void;
