@@ -37,10 +37,10 @@ export default function Sidebar({ active, onNav, open, user, onLogout }: Sidebar
     <aside className="flex h-screen w-60 flex-col border-r border-sidebar-border bg-sidebar">
       {/* Brand */}
       <div className="flex items-center gap-3 border-b border-sidebar-border px-4 py-4">
-        <img src={logoAI} alt="Administración Inteligente" className="h-9 w-auto" />
+        <img src={logoArqenta} alt="ARQENTA" className="h-9 w-auto" />
         <div>
-          <div className="text-sm font-bold text-sidebar-foreground">Adm. Inteligente</div>
-          <div className="text-[11px] text-muted-foreground">Las Palmas Residencial</div>
+          <div className="text-sm font-bold text-sidebar-foreground">ARQENTA</div>
+          <div className="text-[11px] text-muted-foreground">Arquitectura Digital e IA</div>
         </div>
       </div>
 
