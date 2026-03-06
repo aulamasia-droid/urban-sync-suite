@@ -38,7 +38,7 @@ export default function LoginScreen({ onLogin }: LoginScreenProps) {
           {/* Header */}
           <div className="mb-8 text-center">
             <img src={logoAI} alt="Administración Inteligente" className="mx-auto mb-3 h-20 w-auto" />
-            <h1 className="text-2xl font-bold text-card-foreground">Administración Inteligente</h1>
+            
             <p className="mt-1 text-sm text-muted-foreground">Sistema de Administración Residencial</p>
           </div>
 
