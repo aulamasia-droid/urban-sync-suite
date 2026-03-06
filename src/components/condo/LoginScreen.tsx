@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { ROLES_DEMO, RolDemo } from "@/data/mockData";
-import logoAI from "@/assets/logo_ai.png";
+import logoArqenta from "@/assets/logo_arqenta.png";
 
 interface LoginScreenProps {
   onLogin: (user: RolDemo) => void;
@@ -37,7 +37,7 @@ export default function LoginScreen({ onLogin }: LoginScreenProps) {
         <div className="rounded-2xl border border-border bg-card p-8 shadow-xl">
           {/* Header */}
           <div className="mb-8 text-center">
-            <img src={logoAI} alt="Administración Inteligente" className="mx-auto mb-3 h-20 w-auto" />
+            <img src={logoArqenta} alt="ARQENTA" className="mx-auto mb-3 h-24 w-auto" />
             
             <p className="mt-1 text-sm text-muted-foreground">Sistema de Administración Residencial</p>
           </div>
@@ -101,7 +101,7 @@ export default function LoginScreen({ onLogin }: LoginScreenProps) {
           </div>
 
           <p className="mt-5 text-center text-[11px] text-muted-foreground">
-            v1.0.0 Demo · Administración Inteligente
+            v1.0.0 Demo · ARQENTA
           </p>
         </div>
       </div>
