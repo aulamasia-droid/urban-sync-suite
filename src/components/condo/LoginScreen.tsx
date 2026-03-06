@@ -37,7 +37,7 @@ export default function LoginScreen({ onLogin }: LoginScreenProps) {
         <div className="rounded-2xl border border-border bg-card p-8 shadow-xl">
           {/* Header */}
           <div className="mb-8 text-center">
-            <img src={logoAI} alt="Administración Inteligente" className="mx-auto mb-3 h-20 w-auto" />
+            <img src={logoArqenta} alt="ARQENTA" className="mx-auto mb-3 h-24 w-auto" />
             
             <p className="mt-1 text-sm text-muted-foreground">Sistema de Administración Residencial</p>
           </div>
