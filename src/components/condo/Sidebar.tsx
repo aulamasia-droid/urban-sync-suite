@@ -3,7 +3,7 @@ import {
   Home, Building2, Users, List, DollarSign, AlertTriangle, Bell,
   MessageSquare, Wrench, Calendar, Eye, FileText, Settings, LogOut, Mail
 } from "lucide-react";
-import logoAI from "@/assets/logo_ai.png";
+import logoArqenta from "@/assets/logo_arqenta.png";
 
 export const NAV_ITEMS = [
   { id: "dashboard", label: "Dashboard", icon: Home },
