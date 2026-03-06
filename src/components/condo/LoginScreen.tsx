@@ -37,10 +37,8 @@ export default function LoginScreen({ onLogin }: LoginScreenProps) {
         <div className="rounded-2xl border border-border bg-card p-8 shadow-xl">
           {/* Header */}
           <div className="mb-8 text-center">
-            <div className="mx-auto mb-3 flex h-16 w-16 items-center justify-center rounded-2xl bg-primary text-3xl">
-              <Building2 className="h-8 w-8 text-primary-foreground" />
-            </div>
-            <h1 className="text-2xl font-bold text-card-foreground">CondoAdmin Pro</h1>
+            <img src={logoAI} alt="Administración Inteligente" className="mx-auto mb-3 h-20 w-auto" />
+            <h1 className="text-2xl font-bold text-card-foreground">Administración Inteligente</h1>
             <p className="mt-1 text-sm text-muted-foreground">Sistema de Administración Residencial</p>
           </div>
 
