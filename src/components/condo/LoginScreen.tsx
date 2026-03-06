@@ -101,7 +101,7 @@ export default function LoginScreen({ onLogin }: LoginScreenProps) {
           </div>
 
           <p className="mt-5 text-center text-[11px] text-muted-foreground">
-            v1.0.0 Demo · Condominio Las Palmas
+            v1.0.0 Demo · Administración Inteligente
           </p>
         </div>
       </div>
