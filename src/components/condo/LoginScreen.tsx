@@ -100,8 +100,9 @@ export default function LoginScreen({ onLogin }: LoginScreenProps) {
             </div>
           </div>
 
-          <p className="mt-5 text-center text-[11px] text-muted-foreground">
-            v1.0.0 Demo · ARQENTA
+          <p className="mt-5 text-center text-[10px] text-muted-foreground/60">
+            © 2026 ARQENTA | Todos los derechos reservados |{" "}
+            <a href="https://www.arqenta.com.mx" target="_blank" rel="noopener noreferrer" className="underline hover:text-foreground transition-colors">www.arqenta.com.mx</a>
           </p>
         </div>
       </div>
