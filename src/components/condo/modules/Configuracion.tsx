@@ -17,6 +17,9 @@ export default function Configuracion({ dark, onToggleDark }: ConfiguracionProps
   const [showPassword, setShowPassword] = useState(false);
   const [testingEmail, setTestingEmail] = useState("");
   const [testingWebhook, setTestingWebhook] = useState(false);
+  const [selectedResidentId, setSelectedResidentId] = useState(MOCK_RESIDENTS[0]?.id ?? 0);
+  const [testMessage, setTestMessage] = useState("Este es un mensaje de prueba desde el sistema de administración del condominio.");
+  const [editablePayload, setEditablePayload] = useState("");
 
   const handleSmtpSave = () => {
     if (smtpForm.enabled && (!smtpForm.host || !smtpForm.port || !smtpForm.user || !smtpForm.fromEmail)) {
