@@ -6,6 +6,7 @@ export interface Pago {
 }
 export interface Multa {
   id: number; casa: string; residente: string; tipo: string; descripcion: string; monto: number; fecha: string; estado: string;
+  mail_enviado?: boolean; whatsapp_enviado?: boolean; fecha_ultimo_envio?: string;
 }
 export interface Aviso {
   id: number; titulo: string; tipo: string; contenido: string; fecha: string; autor: string; urgente: boolean;
