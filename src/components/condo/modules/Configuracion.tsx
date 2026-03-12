@@ -304,10 +304,14 @@ export default function Configuracion({ dark, onToggleDark }: ConfiguracionProps
                   <p className="mb-3 text-[12px] text-muted-foreground">
                     Envía un payload de prueba con datos del primer residente a la URL configurada.
                   </p>
-                  <Btn variant="outline" onClick={handleWebhookTest} disabled={testingWebhook}>
+                  <button
+                    onClick={handleWebhookTest}
+                    disabled={testingWebhook}
+                    className="inline-flex items-center gap-1.5 rounded-lg border border-border bg-secondary px-3 py-2 text-[13px] font-medium text-foreground transition-colors hover:bg-accent disabled:opacity-50 disabled:cursor-not-allowed"
+                  >
                     {testingWebhook ? <Loader2 className="h-3.5 w-3.5 animate-spin" /> : <Webhook className="h-3.5 w-3.5" />}
                     {testingWebhook ? "Enviando..." : "Probar Webhook"}
-                  </Btn>
+                  </button>
                 </div>
 
                 <div className="flex gap-2">
