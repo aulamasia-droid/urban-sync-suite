@@ -2,6 +2,7 @@ import { useState } from "react";
 import { MOCK_MULTAS, Multa } from "@/data/mockData";
 import { Card, PageHeader, Btn, DataTable, TD, Badge, estadoBadge } from "@/components/condo/SharedComponents";
 import { Plus } from "lucide-react";
+import RowActionsMulta from "./RowActionsMulta";
 
 export default function Multas() {
   const [form, setForm] = useState(false);
@@ -38,7 +39,7 @@ export default function Multas() {
 
       <Card>
         <DataTable
-          columns={["Casa", "Residente", "Tipo", "Descripción", "Monto", "Fecha", "Estado"]}
+          columns={["Casa", "Residente", "Tipo", "Descripción", "Monto", "Fecha", "Estado", "Acciones"]}
           data={MOCK_MULTAS}
           renderRow={(row) => {
             const m = row as Multa;
@@ -51,6 +52,17 @@ export default function Multas() {
                 <TD><span className="font-bold text-destructive">${m.monto}</span></TD>
                 <TD>{m.fecha}</TD>
                 <TD>{estadoBadge(m.estado)}</TD>
+                <TD>
+                  <RowActionsMulta
+                    casa={m.casa}
+                    residente={m.residente}
+                    tipo={m.tipo}
+                    descripcion={m.descripcion}
+                    monto={m.monto}
+                    fecha={m.fecha}
+                    estado={m.estado}
+                  />
+                </TD>
               </>
             );
           }}
