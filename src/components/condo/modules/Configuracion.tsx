@@ -46,6 +46,15 @@ export default function Configuracion({ dark, onToggleDark }: ConfiguracionProps
     setSmtpForm(prev => ({ ...prev, [field]: value }));
   };
 
+  const handleWebhookSave = () => {
+    if (webhookForm.enabled && !webhookForm.url.trim()) {
+      toast.error("Ingresa la URL del Webhook");
+      return;
+    }
+    setWebhook(webhookForm);
+    toast.success("Configuración de Webhook WhatsApp guardada correctamente");
+  };
+
   const buildPayload = () => {
     const testResident = MOCK_RESIDENTS.find(r => r.id === selectedResidentId) || MOCK_RESIDENTS[0];
     return {
