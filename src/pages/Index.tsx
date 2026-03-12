@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { RolDemo } from "@/data/mockData";
+import { SmtpProvider } from "@/contexts/SmtpContext";
 import LoginScreen from "@/components/condo/LoginScreen";
 import Sidebar from "@/components/condo/Sidebar";
 import TopBar from "@/components/condo/TopBar";
@@ -55,16 +56,18 @@ export default function Index() {
   };
 
   return (
-    <div className="flex h-screen overflow-hidden bg-background">
-      <Sidebar active={activeModule} onNav={nav} open={sidebarOpen} user={user} onLogout={() => setUser(null)} />
-      <div className="flex flex-1 flex-col overflow-hidden">
-        <TopBar dark={dark} onToggleDark={toggleDark} user={user} notifOpen={notifOpen} setNotifOpen={setNotifOpen} onMenuToggle={() => setSidebarOpen(!sidebarOpen)} />
-        <main className="flex-1 overflow-y-auto p-6">{renderModule()}</main>
-        <footer className="border-t border-border px-6 py-2 text-center text-[10px] text-muted-foreground/60">
-          © 2026 ARQENTA | Todos los derechos reservados |{" "}
-          <a href="https://www.arqenta.com.mx" target="_blank" rel="noopener noreferrer" className="underline hover:text-foreground transition-colors">www.arqenta.com.mx</a>
-        </footer>
+    <SmtpProvider>
+      <div className="flex h-screen overflow-hidden bg-background">
+        <Sidebar active={activeModule} onNav={nav} open={sidebarOpen} user={user} onLogout={() => setUser(null)} />
+        <div className="flex flex-1 flex-col overflow-hidden">
+          <TopBar dark={dark} onToggleDark={toggleDark} user={user} notifOpen={notifOpen} setNotifOpen={setNotifOpen} onMenuToggle={() => setSidebarOpen(!sidebarOpen)} />
+          <main className="flex-1 overflow-y-auto p-6">{renderModule()}</main>
+          <footer className="border-t border-border px-6 py-2 text-center text-[10px] text-muted-foreground/60">
+            © 2026 ARQENTA | Todos los derechos reservados |{" "}
+            <a href="https://www.arqenta.com.mx" target="_blank" rel="noopener noreferrer" className="underline hover:text-foreground transition-colors">www.arqenta.com.mx</a>
+          </footer>
+        </div>
       </div>
-    </div>
+    </SmtpProvider>
   );
 }
