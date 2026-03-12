@@ -290,32 +290,56 @@ export default function Configuracion({ dark, onToggleDark }: ConfiguracionProps
                   </p>
                 </div>
 
-                {/* Ejemplo de payload */}
+                {/* Destinatario de prueba */}
+                <div>
+                  <label className="mb-1.5 block text-xs font-medium text-muted-foreground">Residente de prueba</label>
+                  <select
+                    value={selectedResidentId}
+                    onChange={e => { setSelectedResidentId(Number(e.target.value)); setEditablePayload(""); }}
+                    className={inputClass}
+                  >
+                    {MOCK_RESIDENTS.map(r => (
+                      <option key={r.id} value={r.id}>{r.nombre} — Casa {r.casa}</option>
+                    ))}
+                  </select>
+                </div>
+
+                {/* Mensaje de prueba */}
+                <div>
+                  <label className="mb-1.5 block text-xs font-medium text-muted-foreground">Mensaje de prueba</label>
+                  <textarea
+                    value={testMessage}
+                    onChange={e => { setTestMessage(e.target.value); setEditablePayload(""); }}
+                    rows={3}
+                    className={inputClass + " resize-y"}
+                    placeholder="Escribe el mensaje que se enviará en la prueba..."
+                  />
+                </div>
+
+                {/* Payload editable */}
                 <div className="rounded-lg border border-border bg-muted/50 p-3">
-                  <h4 className="mb-2 text-[12px] font-semibold text-muted-foreground uppercase tracking-wide">Ejemplo de payload enviado</h4>
-                  <pre className="overflow-x-auto rounded bg-background p-3 text-[11px] text-foreground">
-{JSON.stringify({
-  tipo: "aviso",
-  mensaje: "Recordatorio de pago de cuota mensual.",
-  destinatario: {
-    nombre: "Juan Pérez",
-    casa: "A-101",
-    email: "juan@email.com",
-    telefono: "5551234567",
-    estado: "activo",
-    saldo: 1200,
-  },
-  condominio: { nombre: "Las Palmas Residencial", administrador: "Admin General" },
-  fecha: new Date().toISOString(),
-}, null, 2)}
-                  </pre>
+                  <div className="mb-2 flex items-center justify-between">
+                    <h4 className="text-[12px] font-semibold text-muted-foreground uppercase tracking-wide">Payload a enviar (editable)</h4>
+                    <button
+                      onClick={refreshPayload}
+                      className="text-[11px] font-medium text-primary hover:underline"
+                    >
+                      Regenerar
+                    </button>
+                  </div>
+                  <textarea
+                    value={currentPayloadPreview}
+                    onChange={e => setEditablePayload(e.target.value)}
+                    rows={14}
+                    className={inputClass + " resize-y font-mono text-[11px]"}
+                  />
                 </div>
 
                 {/* Test button */}
                 <div className="rounded-lg border border-border p-4">
                   <h4 className="mb-2 text-[13px] font-semibold text-card-foreground">Probar Webhook</h4>
                   <p className="mb-3 text-[12px] text-muted-foreground">
-                    Envía un payload de prueba con datos del primer residente a la URL configurada.
+                    Envía el payload editado a la URL configurada.
                   </p>
                   <button
                     onClick={handleWebhookTest}
