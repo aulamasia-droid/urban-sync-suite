@@ -111,11 +111,11 @@ export const MOCK_CHAT: ChatMessage[] = [
 ];
 
 export const MOCK_CORREOS: Correo[] = [
-  { id: 1, destinatario: "Todos los residentes", asunto: "Aviso: Asamblea Ordinaria Enero", fecha: "2025-01-14 08:00", estado: "enviado", tipo: "aviso" },
-  { id: 2, destinatario: "María García (A-02)", asunto: "Recordatorio de adeudo - Cuota Enero", fecha: "2025-01-13 09:30", estado: "enviado", tipo: "adeudo" },
-  { id: 3, destinatario: "Luis Hernández (A-05)", asunto: "Multa por estacionamiento indebido #002", fecha: "2025-01-10 11:00", estado: "enviado", tipo: "multa" },
-  { id: 4, destinatario: "Carlos Mendoza (A-01)", asunto: "Confirmación de reserva - Salón 18 Ene", fecha: "2025-01-09 14:20", estado: "enviado", tipo: "reserva" },
-  { id: 5, destinatario: "Residentes con adeudo", asunto: "Último aviso: Cuotas vencidas diciembre", fecha: "2025-01-05 08:00", estado: "enviado", tipo: "adeudo" },
+  { id: 1, destinatario: "Todos los residentes", asunto: "Aviso: Asamblea Ordinaria Enero", fecha: "2025-01-14 08:00", estado: "enviado", tipo: "aviso", canal: "correo" },
+  { id: 2, destinatario: "María García (A-02)", asunto: "Recordatorio de adeudo - Cuota Enero", fecha: "2025-01-13 09:30", estado: "enviado", tipo: "adeudo", canal: "correo" },
+  { id: 3, destinatario: "Luis Hernández (A-05)", asunto: "Multa por estacionamiento indebido #002", fecha: "2025-01-10 11:00", estado: "enviado", tipo: "multa", canal: "correo" },
+  { id: 4, destinatario: "Carlos Mendoza (A-01)", asunto: "Confirmación de reserva - Salón 18 Ene", fecha: "2025-01-09 14:20", estado: "enviado", tipo: "reserva", canal: "correo" },
+  { id: 5, destinatario: "Residentes con adeudo", asunto: "Último aviso: Cuotas vencidas diciembre", fecha: "2025-01-05 08:00", estado: "enviado", tipo: "adeudo", canal: "correo" },
 ];
 
 export const MOCK_DOCUMENTOS: Documento[] = [
