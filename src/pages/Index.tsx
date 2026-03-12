@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { RolDemo } from "@/data/mockData";
+import { SmtpProvider } from "@/contexts/SmtpContext";
 import LoginScreen from "@/components/condo/LoginScreen";
 import Sidebar from "@/components/condo/Sidebar";
 import TopBar from "@/components/condo/TopBar";
