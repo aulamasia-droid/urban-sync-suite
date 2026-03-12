@@ -24,7 +24,7 @@ export interface ChatMessage {
   id: number; canal: string; autor: string; avatar: string; mensaje: string; hora: string; propio: boolean;
 }
 export interface Correo {
-  id: number; destinatario: string; asunto: string; fecha: string; estado: string; tipo: string;
+  id: number; destinatario: string; asunto: string; fecha: string; estado: string; tipo: string; canal: "correo" | "whatsapp";
 }
 export interface Documento {
   id: number; nombre: string; tipo: string; fecha: string; tamaño: string;
