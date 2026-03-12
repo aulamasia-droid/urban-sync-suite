@@ -46,27 +46,11 @@ export default function Configuracion({ dark, onToggleDark }: ConfiguracionProps
     setSmtpForm(prev => ({ ...prev, [field]: value }));
   };
 
-  const handleWebhookSave = () => {
-    if (webhookForm.enabled && !webhookForm.url.trim()) {
-      toast.error("Ingresa la URL del Webhook");
-      return;
-    }
-    setWebhook(webhookForm);
-    toast.success("Configuración de Webhook WhatsApp guardada correctamente");
-  };
-
-  const handleWebhookTest = async () => {
-    if (!webhookForm.url.trim()) {
-      toast.error("Ingresa la URL del Webhook primero");
-      return;
-    }
-    setTestingWebhook(true);
-
-    // Build test payload with first resident's data
-    const testResident = MOCK_RESIDENTS[0];
-    const payload = {
+  const buildPayload = () => {
+    const testResident = MOCK_RESIDENTS.find(r => r.id === selectedResidentId) || MOCK_RESIDENTS[0];
+    return {
       tipo: "prueba",
-      mensaje: "Este es un mensaje de prueba desde el sistema de administración del condominio.",
+      mensaje: testMessage,
       destinatario: {
         nombre: testResident.nombre,
         casa: testResident.casa,
@@ -81,7 +65,30 @@ export default function Configuracion({ dark, onToggleDark }: ConfiguracionProps
       },
       fecha: new Date().toISOString(),
     };
+  };
 
+  const refreshPayload = () => {
+    setEditablePayload(JSON.stringify(buildPayload(), null, 2));
+  };
+
+  // Initialize editable payload on first render or when deps change
+  const currentPayloadPreview = editablePayload || JSON.stringify(buildPayload(), null, 2);
+
+  const handleWebhookTest = async () => {
+    if (!webhookForm.url.trim()) {
+      toast.error("Ingresa la URL del Webhook primero");
+      return;
+    }
+
+    let payload: any;
+    try {
+      payload = JSON.parse(currentPayloadPreview);
+    } catch {
+      toast.error("El payload JSON no es válido. Corrige la sintaxis e intenta de nuevo.");
+      return;
+    }
+
+    setTestingWebhook(true);
     try {
       const res = await fetch(webhookForm.url, {
         method: "POST",
@@ -89,18 +96,12 @@ export default function Configuracion({ dark, onToggleDark }: ConfiguracionProps
         body: JSON.stringify(payload),
       });
       if (res.ok) {
-        toast.success("Webhook respondió correctamente ✅", {
-          description: `Status: ${res.status}`,
-        });
+        toast.success("Webhook respondió correctamente ✅", { description: `Status: ${res.status}` });
       } else {
-        toast.error(`Webhook respondió con error: ${res.status}`, {
-          description: `Verifica la URL e intenta de nuevo.`,
-        });
+        toast.error(`Webhook respondió con error: ${res.status}`, { description: "Verifica la URL e intenta de nuevo." });
       }
     } catch (err: any) {
-      toast.error("No se pudo conectar al Webhook", {
-        description: err?.message || "Verifica la URL y que el servidor esté activo.",
-      });
+      toast.error("No se pudo conectar al Webhook", { description: err?.message || "Verifica la URL y que el servidor esté activo." });
     } finally {
       setTestingWebhook(false);
     }
